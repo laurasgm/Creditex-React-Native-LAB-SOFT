@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Header, Content, Card, CardItem, Body, Text, Left, Right, Title, View, Fab, Button, Icon} from 'native-base';
 
-const dataArray = [
-  { title: "Bancolombia"},
-  { title: "Banco de Bogota"},
-  { title: "Davivienda"}
-];
 
 export default class CardExample extends Component {
 
@@ -16,7 +11,6 @@ export default class CardExample extends Component {
     };
   }
 
-  
 
   render() {
     return (
@@ -34,7 +28,7 @@ export default class CardExample extends Component {
           <Card>
             <CardItem>
               <Body>
-                <Text>dataArray={dataArray}</Text>
+                <Text>Davivienda</Text>
               </Body>
             </CardItem>
           </Card>
