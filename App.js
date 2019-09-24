@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Header, Content, Card, CardItem, Body, Text, Left, Right, Title, View, Fab, Button, Icon} from 'native-base';
-
+import ListaCard from './lista';
 
 export default class CardExample extends Component {
 
@@ -15,7 +15,7 @@ export default class CardExample extends Component {
   render() {
     return (
       <Container>
-        <Header>
+        <Header noLeft span>
           <Left />
             <Body>
               <Title>Creditex</Title>
@@ -25,15 +25,13 @@ export default class CardExample extends Component {
 
 
         <Content>
-          <Card>
-            <CardItem>
-              <Body>
-                <Text>Davivienda</Text>
-              </Body>
-            </CardItem>
-          </Card>
+          <ListaCard name='Davivienda'></ListaCard>
+          <ListaCard name='Bancolombia #1'></ListaCard>
+          <ListaCard name='Banco de Bogota'></ListaCard>
+          <ListaCard name='Bancolombia #2'></ListaCard>
         </Content>
 
+        
 
         <View style={{ flex: 1 }}>
           <Fab
