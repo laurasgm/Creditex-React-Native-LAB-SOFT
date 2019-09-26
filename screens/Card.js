@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Header, Content, Card, CardItem, Body, Text, Left, Right, Title, View, Fab, Button, Icon} from 'native-base';
 
-export default class listaCard extends Component {
+export default class Cards extends Component {
 
     render(){
         return(
