@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {StyleSheet} from "react-native";
-import { Container, Header, Content, Card, CardItem, Body, Text, Left, Right, Title, View, Fab, Icon} from 'native-base';
-import {Button} from 'react-native-elements';
+import { Container, Header, Content, Card, CardItem, Body, Left, Right, Title, View, Fab, Icon} from 'native-base';
+import {Button,Text} from 'react-native-elements';
 
 
 import t from 'tcomb-form-native';
@@ -16,16 +16,40 @@ export default class Cuenta extends Component {
 
     this.state={
       registerStruct: RegisterStruct,
-      registerOptions: RegisterOptions
-    }
+      registerOptions: RegisterOptions,
+      formData:{
+        name:"",
+        description:"",
+        tasainteres:""
+      },
+      formErrorMessage: ""
+    };
   }
 
   register = () =>{
+    console.log(this.state.formData);
     const validate = this.refs.registerForm.getValue();
+
+    if (validate){
+      this.setState({
+        formErrorMessage:""
+      })
+      console.log("Formulario correcto");
+    }else{
+      this.setState({
+        formErrorMessage:"Formulario invalido"
+      })
+    }
   }
+
+  onChangeFormRegister = formValue =>{
+    this.setState({
+      formData: formValue
+    });
+  };
     render() {
 
-      const { registerOptions, registerStruct} = this.state;
+      const { registerOptions, registerStruct, formErrorMessage} = this.state;
 
         return (
           <View style={styles.container}>
@@ -33,14 +57,16 @@ export default class Cuenta extends Component {
             <Form
               ref="registerForm"
               type={registerStruct}
-              options= {registerOptions}            
+              options= {registerOptions}
+              value={this.state.formData}
+              onChange={formValue => this.onChangeFormRegister(formValue)}    
             />
             <Button
+              buttonStyle= {styles.buttonRegisterContainer}
               title="Crear"
-              type= "outline"
               onPress= {() => this.register()}
             />
-
+            <Text style={styles.formErrorMessageContainer}>{formErrorMessage}</Text>
           </View>
         );
       }
@@ -53,5 +79,16 @@ const styles = StyleSheet.create({
     marginLeft: 40,
     marginRight: 40
 
+  },
+  buttonRegisterContainer:{
+    backgroundColor: "#00a680",
+    marginTop:20,
+    marginLeft:10,
+    marginRight:10,
+  },
+  formErrorMessageContainer:{
+    color:"#f00",
+    textAlign: 'center',
+    marginTop:30
   }
 });

@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import {StyleSheet,Text,View} from "react-native";
 
+import inputTemplate from './templates/Input';
+
 import t from "tcomb-form-native";
 
-
+// Registro para crear una cuenta nueva
 export const RegisterStruct = t.struct({
     name: t.String,
     description: t.String,
@@ -13,20 +15,29 @@ export const RegisterStruct = t.struct({
 export const RegisterOptions = {
     fields:{
         name:{
-            label:"Nombre (*)",
-            placeholder: "Nombre de la cuenta",
-            error:"Nombre invalido"
+            template: inputTemplate,
+            config:{
+                placeholder:"Nombre de la cuenta",
+                iconType:"material-community",
+                iconName: "account-outline"
+            }
         },
         description:{
-            label:"Descripcion (*)",
-            placeholder: "Decribe tu cuenta",
-            error:"Descripcion invalida"
+            template: inputTemplate,
+            config:{
+                placeholder:"Decribe tu cuenta",
+                iconType:"material-community",
+                iconName: "book-open-page-variant"
+            }
         },
         tasainteres:{
-            label:"Tasa de interes (*)",
-            placeholder: "¿De cuanto es tu tasa de interes?",
-            error:"Tasa de interes invalida"
+            template: inputTemplate,
+            config:{
+                placeholder:"¿Tasa de interes?",
+                iconType:"material-community",
+                iconName:"currency-usd"
 
+            }
         }
 
     }
