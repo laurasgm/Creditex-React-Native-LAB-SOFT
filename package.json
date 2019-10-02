@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "expo": "^35.0.0",
+    "firebase": "^7.0.0",
+    "firebase-admin": "^8.6.0",
     "flatted": "^2.0.1",
     "native-base": "^2.13.8",
     "react": "16.8.3",
