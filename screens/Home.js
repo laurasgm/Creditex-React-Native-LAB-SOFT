@@ -3,28 +3,14 @@ import { Container, Header, Content, Card, CardItem, Body, Text, Left, Right, Ti
 import Cards from './Card';
 import firebase from 'firebase';
 
-
-/*
-var serviceAccount = require("../creditex-d5548-firebase-adminsdk-ub5y8-88db07d86d.json");
-
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://creditex-d5548.firebaseio.com"
-});
-
-var db = admin.database();
-var ref = db.ref("/");
-ref.once("value", function(snapshot) {
-  console.log(snapshot.val());
-});
-*/
 export default class HomeCard extends Component {
 
   constructor(props) {
     super(props)
     this.state = ({
       active: false,
-      cuenta: " "
+      cuenta: " ",
+      cuenta2: " "
     });
   }
 
@@ -43,9 +29,9 @@ export default class HomeCard extends Component {
     firebase.initializeApp(firebaseConfig);
 
     firebase.database().ref("/").ref.once("value", ((snapshot) => {
-      console.log(snapshot.val().cuenta1.nombre)
       this.setState({
-        cuenta : snapshot.val().cuenta1.nombre
+        cuenta : snapshot.val().cuenta1.nombre,
+        cuenta2: snapshot.val().cuenta2.nombre
         
       })
     })
@@ -60,7 +46,7 @@ export default class HomeCard extends Component {
 
         <Content>
           <Cards name= {this.state.cuenta}></Cards>
-          <Cards name='Bancolombia #1'></Cards>
+          <Cards name={this.state.cuenta2}></Cards>
         </Content>
 
       </Container>

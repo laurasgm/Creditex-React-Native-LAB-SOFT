@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {StyleSheet} from "react-native";
 import { Container, Header, Content, Card, CardItem, Body, Left, Right, Title, View, Fab, Icon} from 'native-base';
 import {Button,Text} from 'react-native-elements';
-
+import firebase from 'firebase';
 
 import t from 'tcomb-form-native';
 const Form = t.form.Form;
@@ -10,6 +10,7 @@ import {RegisterStruct,RegisterOptions} from '../forms/Register';
 
 
 export default class Cuenta extends Component {
+
 
   constructor(){
     super();
@@ -26,15 +27,22 @@ export default class Cuenta extends Component {
     };
   }
 
-  register = () =>{
-    console.log(this.state.formData);
-    const validate = this.refs.registerForm.getValue();
 
+  register = () =>{
+    console.log(this.state.formData.name);
+    const validate = this.refs.registerForm.getValue();
+    userId = 3;
     if (validate){
       this.setState({
         formErrorMessage:""
       })
-      console.log("Formulario correcto");
+        firebase.database().ref('cuenta' + userId + '/').set({
+          name : this.state.formData.name,
+          descripcion: this.state.formData.description,
+          tasa : this.state.formData.tasainteres
+        })
+        alert('Cuenta registrada');
+        userId+=1;
     }else{
       this.setState({
         formErrorMessage:"Formulario invalido"
