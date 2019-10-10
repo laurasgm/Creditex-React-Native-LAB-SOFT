@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { Container, Header, Content, Card, CardItem, Body, Text, Left, Right, Title, View, Fab, Button, Icon} from 'native-base';
+import {ActivityIndicator,View,TouchableOpacity} from 'react-native';
+import { Container, Header, Content, Card, CardItem, Body, Text, Left, Right, Title,  Fab, Button, Icon} from 'native-base';
 import Cards from './Card';
 import firebase from 'firebase';
+import {Navigation} from 'react-native-navigation';
+
 
 export default class HomeCard extends Component {
 
@@ -9,8 +12,7 @@ export default class HomeCard extends Component {
     super(props)
     this.state = ({
       active: false,
-      cuenta: " ",
-      cuenta2: " "
+      cuentas: []
     });
   }
 
@@ -26,30 +28,51 @@ export default class HomeCard extends Component {
       measurementId: "G-1LQ82L7Y8W"
     };
     // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
+    firebase.initializeApp(firebaseConfig); 
+  };
 
-    firebase.database().ref("/").ref.once("value", ((snapshot) => {
+  componentDidMount(){
+    const cuentasref = firebase.database().ref("/");
+    this.loadcount(cuentasref);
+  }
+
+  loadcount = (cuentasref) => {
+    cuentasref.on('value', (snap) =>{
+      var lista = [];
+      snap.forEach((child) => {
+        //console.log(child.val().name);
+        lista.push({
+          name: child.val().name
+        });
+      });
       this.setState({
-        cuenta : snapshot.val().cuenta1.nombre,
-        cuenta2: snapshot.val().cuenta2.nombre
-        
-      })
-    })
-    )};
+        cuentas : lista
+      });
+     // console.log(this.state.cuentas);
+    });
+    
+  }
 
-
+  clickDetalles = () =>{
+    this.props.navigation.navigate("Detalles");
+  }
   
   
   render() {
+    
     return (
       <Container>
-
-        <Content>
-          <Cards name= {this.state.cuenta}></Cards>
-          <Cards name={this.state.cuenta2}></Cards>
-        </Content>
-
+        
+          <Content>
+            
+              {this.state.cuentas.map( item => 
+              <Cards name={item.name}></Cards>
+              )}
+            
+          </Content>
+        
       </Container>
+      
     );
   }
 }

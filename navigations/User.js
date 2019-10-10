@@ -5,8 +5,10 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
+//Screens Creditex
 import HomeScreen from '../screens/Home';
 import CuentaScreen from '../screens/Cuenta';
+import DetallesScreen from '../screens/Detalles';
 
 //mis cabeceras de navegacion
 const homescreenStack = createStackNavigator({
@@ -15,6 +17,9 @@ const homescreenStack = createStackNavigator({
         navigationOptions: ({ navigation }) => ({
             title: "Home"
         })
+    },
+    Detalles: {
+        screen: DetallesScreen
     }
 });
 

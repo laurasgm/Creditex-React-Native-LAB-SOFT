@@ -7,7 +7,7 @@ import firebase from 'firebase';
 import t from 'tcomb-form-native';
 const Form = t.form.Form;
 import {RegisterStruct,RegisterOptions} from '../forms/Register';
-
+let userId = 3;
 
 export default class Cuenta extends Component {
 
@@ -27,11 +27,11 @@ export default class Cuenta extends Component {
     };
   }
 
-
+  
   register = () =>{
     console.log(this.state.formData.name);
     const validate = this.refs.registerForm.getValue();
-    userId = 3;
+    
     if (validate){
       this.setState({
         formErrorMessage:""
