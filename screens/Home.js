@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import {ActivityIndicator,View,TouchableOpacity} from 'react-native';
 import { Container, Header, Content, Card, CardItem, Body, Text, Left, Right, Title,  Fab, Button, Icon} from 'native-base';
-import Cards from './Card';
 import firebase from 'firebase';
-import {Navigation} from 'react-native-navigation';
+
 
 
 export default class HomeCard extends Component {
@@ -62,13 +61,18 @@ export default class HomeCard extends Component {
     
     return (
       <Container>
-        
           <Content>
-            
               {this.state.cuentas.map( item => 
-              <Cards name={item.name}></Cards>
+               <TouchableOpacity onPress={() => this.clickDetalles()}>
+               <Card>
+                 <CardItem>
+                   <Body>
+                     <Text>{item.name}</Text>
+                   </Body>
+                 </CardItem>
+               </Card>
+               </TouchableOpacity>
               )}
-            
           </Content>
         
       </Container>
