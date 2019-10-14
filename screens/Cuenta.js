@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
 
   },
   buttonRegisterContainer:{
-    backgroundColor: "#00a680",
+    backgroundColor: "#558b2f",
     marginTop:20,
     marginLeft:10,
     marginRight:10,
