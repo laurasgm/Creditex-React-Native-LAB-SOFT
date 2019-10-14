@@ -75,7 +75,7 @@ const RootStack = createBottomTabNavigator({
     order:['Home','Cuenta'],
     tabBarOptions:{
         inactiveTintColor:"#646464",
-        activeTintColor:"#00a680"
+        activeTintColor:"#558b2f"
     }
 }
 );

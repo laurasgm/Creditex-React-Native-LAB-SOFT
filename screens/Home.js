@@ -57,7 +57,6 @@ export default class HomeCard extends Component {
     this.props.navigation.navigate("Detalles", {item});
   }
   
-  
   render() {
     
     return (
