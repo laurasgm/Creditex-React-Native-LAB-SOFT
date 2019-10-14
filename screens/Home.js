@@ -41,6 +41,7 @@ export default class HomeCard extends Component {
       snap.forEach((child) => {
         //console.log(child.val().name);
         lista.push({
+          all: child.val(),//me trae todo del item para la ventana de detalles
           name: child.val().name
         });
       });
@@ -52,8 +53,9 @@ export default class HomeCard extends Component {
     
   }
 
-  clickDetalles = () =>{
+  clickDetalles = (item) =>{
     this.props.navigation.navigate("Detalles");
+    console.log(item);
   }
   
   
@@ -63,7 +65,7 @@ export default class HomeCard extends Component {
       <Container>
           <Content>
               {this.state.cuentas.map( item => 
-               <TouchableOpacity onPress={() => this.clickDetalles()}>
+               <TouchableOpacity onPress={() => this.clickDetalles(item.all)}>
                <Card>
                  <CardItem>
                    <Body>

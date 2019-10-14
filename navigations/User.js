@@ -19,9 +19,11 @@ const homescreenStack = createStackNavigator({
         })
     },
     Detalles: {
-        screen: DetallesScreen
-    }
-});
+        screen: DetallesScreen,
+        navigationOptions: ({ navigation }) => ({
+            title: "Detalles de cuenta"
+    })
+}});
 
 const cuentascreenStack = createStackNavigator({
     Cuenta:{
