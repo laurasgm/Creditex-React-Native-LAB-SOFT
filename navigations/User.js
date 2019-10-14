@@ -20,10 +20,13 @@ const homescreenStack = createStackNavigator({
     },
     Detalles: {
         screen: DetallesScreen,
-        navigationOptions: ({ navigation }) => ({
-            title: "Detalles de cuenta"
-    })
-}});
+        navigationOptions: ({ navigation }) => (
+            {
+                title: navigation.state.params.item.name
+            }
+        )
+    }
+});
 
 const cuentascreenStack = createStackNavigator({
     Cuenta:{

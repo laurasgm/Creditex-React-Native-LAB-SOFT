@@ -54,8 +54,7 @@ export default class HomeCard extends Component {
   }
 
   clickDetalles = (item) =>{
-    this.props.navigation.navigate("Detalles");
-    console.log(item);
+    this.props.navigation.navigate("Detalles", {item});
   }
   
   
